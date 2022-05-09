@@ -52,10 +52,10 @@ jobs:
             image: debian:sid
             branch: 10.7
             platforms: linux/amd64, linux/arm64/v8, linux/ppc64le
-          - dockerfile: debian.Dockerfile
-            image: debian:sid
-            branch: 10.7
-            platforms: linux/386
+          # - dockerfile: debian.Dockerfile
+          #   image: debian:sid
+          #   branch: 10.7
+          #   platforms: linux/386
           - dockerfile: debian.Dockerfile
             image: ubuntu:18.04
             branch: 10.7
@@ -76,24 +76,24 @@ jobs:
             image: ubuntu:22.04
             branch: 10.7
             platforms: linux/amd64, linux/arm64/v8, linux/ppc64le, linux/s390x
-          - dockerfile: fedora.Dockerfile
-            image: fedora:34
-            platforms: linux/amd64, linux/arm64/v8
-          - dockerfile: fedora.Dockerfile
-            image: fedora:35
-            platforms: linux/amd64, linux/arm64/v8
-          - dockerfile: centos7.Dockerfile
-            image: centos:7
-            platforms: linux/amd64, linux/arm64/v8, linux/ppc64le
-          - dockerfile: centos.Dockerfile
-            image: quay.io/centos/centos:stream8
-            platforms: linux/amd64, linux/arm64/v8
-          - dockerfile: rhel7.Dockerfile
-            image: rhel7
-            platforms: linux/amd64, linux/ppc64le
-          - dockerfile: rhel8.Dockerfile
-            image: ubi8
-            platforms: linux/amd64, linux/arm64/v8, linux/ppc64le
+          # - dockerfile: fedora.Dockerfile
+          #   image: fedora:34
+          #   platforms: linux/amd64, linux/arm64/v8
+          # - dockerfile: fedora.Dockerfile
+          #   image: fedora:35
+          #   platforms: linux/amd64, linux/arm64/v8
+          # - dockerfile: centos7.Dockerfile
+          #   image: centos:7
+          #   platforms: linux/amd64, linux/arm64/v8, linux/ppc64le
+          # - dockerfile: centos.Dockerfile
+          #   image: quay.io/centos/centos:stream8
+          #   platforms: linux/amd64, linux/arm64/v8
+          # - dockerfile: rhel7.Dockerfile
+          #   image: rhel7
+          #   platforms: linux/amd64, linux/ppc64le
+          # - dockerfile: rhel8.Dockerfile
+          #   image: ubi8
+          #   platforms: linux/amd64, linux/arm64/v8, linux/ppc64le
     env:
       BUILD_RHEL: false
       DEPLOY_IMAGES: false
