@@ -23,7 +23,7 @@ RUN if grep -q "ID=debian" /etc/os-release; then \
 # see: https://cryptography.io/en/latest/installation/
 RUN apt-get update \
     && apt-get -y upgrade \
-    && apt-get -y install --no-install-recommends curl devscripts equivs \
+    && apt-get -y install --no-install-recommends ca-certificates curl devscripts equivs \
     && curl -skO https://raw.githubusercontent.com/MariaDB/server/$mariadb_branch/debian/control \
     # MDEV-27965 - temporary hack to introduce a late libfmt dependency, so \
     # the main branches don't immediately fail on autobake builders once \
@@ -56,6 +56,10 @@ RUN apt-get update \
         sed '/libfmt-dev/d' -i control; \
         sed '/liburing-dev/d' -i control; \
     fi \
+    && curl \
+       https://salsa.debian.org/salsa-ci-team/pipeline/-/raw/master/images/scripts/check_for_missing_breaks_replaces.py \
+       > /usr/local/bin/check_for_missing_breaks_replaces.py \
+    && chmod +x /usr/local/bin/check_for_missing_breaks_replaces.py \
     && mk-build-deps -r -i control \
     -t 'apt-get -y -o Debug::pkgProblemResolver=yes --no-install-recommends' \
     && apt-get -y build-dep -q mariadb-server \
